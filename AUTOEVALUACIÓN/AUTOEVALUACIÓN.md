@@ -1,0 +1,4 @@
+- Asistencia y participación: 4.5
+- Analisis: 4.5
+- Algoritmo: 4.7
+- Organización: 5
