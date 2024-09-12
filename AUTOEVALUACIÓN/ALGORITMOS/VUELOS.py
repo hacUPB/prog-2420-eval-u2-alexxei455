@@ -1,5 +1,5 @@
 import random
-
+import datetime
 # 1. Información del Usuario
 titulo = input("Ingrese su título (Sr. o Sra.): ")
 nombre = input("Ingrese su nombre completo: ")
@@ -41,42 +41,34 @@ else:
 
 # Lista de días válidos de la semana
 dias_validos_semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
+hoy = datetime.datetime.now()
+print(hoy)
 
-# Validación para el día de la semana
-while True:
-    dia_semana = input("Ingrese el día de la semana: ").lower()
-    if dia_semana not in dias_validos_semana:
-        print("Error: Día de la semana no válido. Por favor ingrese un día válido (lunes a domingo).")
-    else:
-        break  # Sale del bucle si el día es válido
+# Lista de días válidos de la semana
+fecha = input("Ingerese la fecha del viaje con formato dd/mm/aaaa: ")
+fecha_sis = datetime.datetime.strptime(fecha, "%d/%m/%Y")
+print(fecha_sis)
 
-# Validación para el día del mes (1-30)
-##Video de try-except: https://www.youtube.com/watch?v=IFfdRY609Fg&ab_channel=UskoKruM2010
-while True:
-    try:
-        dia_mes = int(input("Ingrese el día del mes (1-30): "))
-        if dia_mes < 1 or dia_mes > 30:
-            print("Error: Día del mes fuera de rango. Por favor ingrese un número entre 1 y 30.")
-        else:
-            break  # Sale del bucle si el día es válido
-    except:
-        print("Error: Por favor ingrese un número entero válido.")
+dia = fecha_sis.weekday()
 
+print(dia)
+
+print(dias_validos_semana[dia])
 
 # Calcular el precio del billete
 if distancia < 400:
-    if dia_semana in ["lunes", "martes", "miércoles", "jueves"]:
+    if dias_validos_semana in ["lunes", "martes", "miércoles", "jueves"]:
         precio = 79900
     else:
         precio = 119900
 else:
-    if dia_semana in ["lunes", "martes", "miércoles", "jueves"]:
+    if dias_validos_semana in ["lunes", "martes", "miércoles", "jueves"]:
         precio = 156900
     else:
         precio = 213000
 
 # Mostrar el precio calculado
-print(f"\nEl vuelo de {origen} a {destino} el día {dia_semana}, {dia_mes} tendrá un costo de ${precio}.\n")
+print(f"\nEl vuelo de {origen} a {destino} el día {dias_validos_semana[dia]}, tendrá un costo de ${precio}.\n")
 
 # 3. Asignación de Asiento
 preferencia_asiento = input("¿Prefiere asiento en pasillo, ventana o sin preferencia? ").lower()
@@ -92,6 +84,6 @@ else:
 numero_asiento = random.randint(1, 29)
 
 # Mostrar el asiento asignado
-print(f"{titulo}{nombre} se le ha asignado el asiento {numero_asiento}{asiento} para el vuelo del {dia_semana} {dia_mes} con origen {origen} y destino {destino}.")
+print(f"{titulo}{nombre} se le ha asignado el asiento {numero_asiento}{asiento} para el vuelo del {dias_validos_semana[dia]} con origen {origen} y destino {destino}.")
 
 
