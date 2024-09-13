@@ -1,4 +1,5 @@
 import time
+
 def obtener_float_valido(mensaje, minimo=0, es_positivo=True):
     """Solicita un valor flotante al usuario y valida que sea un número válido."""
     while True:

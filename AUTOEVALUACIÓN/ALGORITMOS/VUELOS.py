@@ -1,5 +1,6 @@
 import random
 import datetime
+
 # 1. Información del Usuario
 titulo = input("Ingrese su título (Sr. o Sra.): ")
 nombre = input("Ingrese su nombre completo: ")
@@ -41,9 +42,9 @@ else:
 
 # Lista de días válidos de la semana
 dias_validos_semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
+
 hoy = datetime.datetime.now()
 print(hoy)
-
 # Lista de días válidos de la semana
 fecha = input("Ingerese la fecha del viaje con formato dd/mm/aaaa: ")
 fecha_sis = datetime.datetime.strptime(fecha, "%d/%m/%Y")
@@ -54,6 +55,7 @@ dia = fecha_sis.weekday()
 print(dia)
 
 print(dias_validos_semana[dia])
+
 
 # Calcular el precio del billete
 if distancia < 400:
@@ -68,7 +70,7 @@ else:
         precio = 213000
 
 # Mostrar el precio calculado
-print(f"\nEl vuelo de {origen} a {destino} el día {dias_validos_semana[dia]}, tendrá un costo de ${precio}.\n")
+print(f"\nEl vuelo de {origen} a {destino} el día {fecha_sis.day} del mes {fecha_sis.month} del {fecha_sis.year}, tendrá un costo de ${precio}.\n")
 
 # 3. Asignación de Asiento
 preferencia_asiento = input("¿Prefiere asiento en pasillo, ventana o sin preferencia? ").lower()
@@ -84,6 +86,6 @@ else:
 numero_asiento = random.randint(1, 29)
 
 # Mostrar el asiento asignado
-print(f"{titulo}{nombre} se le ha asignado el asiento {numero_asiento}{asiento} para el vuelo del {dias_validos_semana[dia]} con origen {origen} y destino {destino}.")
+print(f"{titulo}{nombre} se le ha asignado el asiento {numero_asiento}{asiento} para el vuelo del {fecha_sis.day} del mes {fecha_sis.month} del {fecha_sis.year} con origen {origen} y destino {destino}.")
 
 
